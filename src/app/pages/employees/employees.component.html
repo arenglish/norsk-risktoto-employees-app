@@ -15,7 +15,8 @@
                            class="nr-employee-list__item-text">
                             {{ employee.name | fullname }}
                         </a>
-                        <button class="nr-employee-list__flag-button" title="Flag {{fullname}}"
+                        <button class="nr-employee-list__flag-button"
+                                title="{{ employee.flagged ? 'Unflag' : 'Flag' }} {{fullname}}"
                                 (click)="onFlagEmployeeButtonClicked(employee.localId)">
                             {{ employee.flagged ? 'Unflag' : 'Flag' }}
                             <svg class="nr-employees-list__item-icon-svg"
