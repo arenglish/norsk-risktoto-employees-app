@@ -5,19 +5,29 @@ import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
     {
-        path: 'employees',
-        component: EmployeesComponent,
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'about',
+        title: 'About | HR Dashboard',
     },
     {
-        path: 'employees/:employeeId',
+        path: 'employees',
         component: EmployeesComponent,
+        title: 'Employees | HR Dashboard',
+    },
+    {
+        path: 'employees/:selectedEmployeeId',
+        component: EmployeesComponent,
+        title: 'Employee Details | HR Dashboard',
     },
     {
         path: 'settings',
         component: SettingsComponent,
+        title: 'Settings | HR Dashboard',
     },
     {
         path: 'about',
         component: AboutComponent,
+        title: 'About | HR Dashboard',
     },
 ];
