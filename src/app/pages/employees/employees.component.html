@@ -6,17 +6,18 @@
             </button>
             <ng-container *ngIf="!($isReloadingEmployees | async); else showLoadingEmployeesTemplate">
                 @for (employee of employees; track $index; let idx = $index) {
-                    <li class="nr-employee-list__item"
+                    @let fullname = employee.name | fullname;
+                    <li class="nr-employee-list__item" title="{{ fullname }}"
                         [ngClass]="employee.flagged ? 'nr-employee-list__item--flagged' : ''">
-                        <a routerLink="/employees/{{ employee.localId }}" class="nr-employee-list__item-link">
-                            <img class="nr-employees-list__item-avatar" alt="Avatar for {{ employee.name | fullname }}"
-                                 [src]="employee.picture.thumbnail"/>
-                            <div class="nr-employee-list__item-text">
-                                {{ employee.name | fullname }}
-                            </div>
+                        <img class="nr-employees-list__item-avatar" alt="Avatar for {{ fullname }}"
+                             [src]="employee.picture.thumbnail"/>
+                        <a href="/employees/{{ employee.localId }}" routerLink="/employees/{{ employee.localId }}"
+                           class="nr-employee-list__item-text">
+                            {{ employee.name | fullname }}
                         </a>
-                        <button class="nr-employee-list__flag-button"
+                        <button class="nr-employee-list__flag-button" title="Flag {{fullname}}"
                                 (click)="onFlagEmployeeButtonClicked(employee.localId)">
+                            {{ employee.flagged ? 'Unflag' : 'Flag' }}
                             <svg class="nr-employees-list__item-icon-svg"
                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -43,7 +44,7 @@
             <h2>
                 {{ ($selectedEmployee | async)?.name | fullname }}
             </h2>
-            <img alt="Avatar for {{ employee.name | fullname }}"
+            <img alt="Profile image for {{ employee.name | fullname }}"
                  [src]="employee.picture.large"/>
             <p><b>Gender:</b> {{ employee.gender }}</p>
         </article>

@@ -4,6 +4,10 @@
     gap: 2rem;
 }
 
+.sidebar {
+    width: 22rem;
+}
+
 .nr-employee-list__item {
     display: flex;
     align-items: center;
@@ -15,22 +19,17 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     text-wrap: nowrap;
-    width: 10rem;
-    overflow-x: hidden;
+    width: 100%;
 }
-
 
 .nr-employee-list__item-link {
     display: contents;
 }
 
 .nr-employee-list__flag-button {
-    display: none;
     background: none;
-}
-
-.nr-employee-list__item--flagged .nr-employee-list__flag-button, .nr-employee-list__item:hover .nr-employee-list__flag-button {
-    display: revert;
+    color: var(--accent);
+    white-space: nowrap;
 }
 
 .nr-employees-list__item-avatar {
