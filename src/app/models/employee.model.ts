@@ -1,8 +1,6 @@
 export interface EmployeeModel {
-    id: {
-        name: string;
-        value: string;
-    };
+    localId: string;
+    gender: string;
     picture: {
         large: string;
         medium: string;
